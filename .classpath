@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="integration-test/src/main/java"/>
+	<classpathentry kind="src" path="project/DummyDemo-web/src/main/java"/>
+	<classpathentry kind="src" path="project/DummyDemo-ejb/src/main/java"/>
+	<classpathentry kind="src" path="integration-test/src/test/java"/>
+	<classpathentry kind="src" path="project/DummyDemo-api/src/main/java"/>
+	<classpathentry kind="src" path="project/DummyDemo-api/src/test/java"/>
+	<classpathentry kind="src" path="project/DummyDemo-appclient/src/main/java"/>
+	<classpathentry kind="src" path="test"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jboss_client"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

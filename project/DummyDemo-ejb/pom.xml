@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<!-- Basic Properties -->
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.developerscrappad</groupId>
+	<artifactId>DummyDemo-ejb</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<name>DummyDemo-ejb</name>
+	
+	<!-- Reference the parent -->
+	<parent>
+		<artifactId>project</artifactId>
+		<groupId>com.developerscrappad</groupId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+
+	<!-- The packaging value of any EJB module should be "ejb" -->
+	<packaging>ejb</packaging>
+	
+	<!-- The necessary dependency, including any internal libraries like the 
+		DummyDemo-api -->
+	<dependencies>
+		<dependency>
+			<groupId>com.developerscrappad</groupId>
+			<artifactId>DummyDemo-api</artifactId>
+			<version>1.0-SNAPSHOT</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>7.0</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.0.2</version>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
+				</configuration>
+			</plugin>
+
+			<!-- Make sure you state the EJB version correctly -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ejb-plugin</artifactId>
+				<version>2.1</version>
+				<configuration>
+					<ejbVersion>3.0</ejbVersion>
+				</configuration>
+			</plugin>
+			<!-- The surefire plugin is for unit testing purposes. For unit test, 
+				it will only pickup files within the **/utest/ directory. So, make sure you 
+				know where to place your unit test java files. -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.12.4</version>
+				<executions>
+					<execution>
+						<id>sf1</id>
+						<goals>
+							<goal>test</goal>
+						</goals>
+						<phase>test</phase>
+					</execution>
+				</executions>
+				<configuration>
+					<includes>
+						<include>**/utest/*.java</include>
+					</includes>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

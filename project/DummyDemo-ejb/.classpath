@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/main/java"
+		including="**/*.java" />
+	<classpathentry kind="src" path="src/main/resources"
+		excluding="**/*.java" />
+	<classpathentry kind="output" path="target/classes" />
+	<classpathentry kind="con"
+		path="org.eclipse.jdt.launching.JRE_CONTAINER" />
+	<classpathentry kind="var"
+		path="M2_REPO/com/developerscrappad/DummyDemo-api/1.0-SNAPSHOT/DummyDemo-api-1.0-SNAPSHOT.jar" />
+	<classpathentry kind="var"
+		path="M2_REPO/javaee/javaee-api/7.0/javaee-api-7.0.jar" />
+	<classpathentry kind="var"
+		path="M2_REPO/junit/junit/4.10/junit-4.10.jar" />
+	<classpathentry kind="var"
+		path="M2_REPO/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar" />
+</classpath>

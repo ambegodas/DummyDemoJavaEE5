@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!-- Basic Properties -->
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.developerscrappad</groupId>
+    <artifactId>DummyDemo-ear</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>DummyDemo-ear</name>
+
+    <!-- The absolute path to the JBoss Server, please change this... -->
+    <properties>
+        <jboss.directory>/home/pathmasri/Testing/jboss-5.1.0.GA/</jboss.directory>
+        <!--jboss.directory>/home/pathmasri/Testing/jboss-4.2.3.GA/</jboss.directory -->
+    </properties>
+    <!-- Reference the parent -->
+    <parent>
+        <artifactId>project</artifactId>
+        <groupId>com.developerscrappad</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <!-- The packaging value of any EAR module should be "ear" -->
+    <packaging>ear</packaging>
+    <!--
+        The dependencies for EAR module should include all thoese sub-modules
+        that are needed to be packaged into the ear file like the below...
+    -->
+    <dependencies>
+        <dependency>
+            <groupId>com.developerscrappad</groupId>
+            <artifactId>DummyDemo-ejb</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <type>ejb</type>
+        </dependency>
+        <dependency>
+            <groupId>com.developerscrappad</groupId>
+            <artifactId>DummyDemo-web</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>com.developerscrappad</groupId>
+            <artifactId>DummyDemo-appclient</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <type>app-client</type>
+        </dependency>
+        <dependency>
+            <groupId>com.developerscrappad</groupId>
+            <artifactId>DummyDemo-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <type>jar</type>
+        </dependency>
+    </dependencies>
+    
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.0.2</version>
+                <configuration>
+                    <source>1.5</source>
+                    <target>1.5</target>
+                </configuration>
+            </plugin>
+            <!--
+                The ear plugin must include the definition for "modules",
+                for any modules that are needed to be included in the EAR file,
+                you need to specify them one by one, e.g. "ejbModule", "webModule",
+                "jarModule" and "appClientModule".
+            -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-ear-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <version>5</version>
+                    <defaultLibBundleDir>lib</defaultLibBundleDir>
+                    <modules>
+                        <ejbModule>
+                            <groupId>com.developerscrappad</groupId>
+                            <artifactId>DummyDemo-ejb</artifactId>
+                        </ejbModule>
+                        <webModule>
+                            <groupId>com.developerscrappad</groupId>
+                            <artifactId>DummyDemo-web</artifactId>
+                            <context-root>/DummyDemo-web</context-root>
+                        </webModule>
+                        <jarModule>
+                            <groupId>com.developerscrappad</groupId>
+                            <artifactId>DummyDemo-api</artifactId>
+                        </jarModule>
+                        <appClientModule>
+                            <groupId>com.developerscrappad</groupId>
+                            <artifactId>DummyDemo-appclient</artifactId>
+                        </appClientModule>
+                    </modules>
+                </configuration>
+            </plugin>
+            <!-- JBoss App Server -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jboss-maven-plugin</artifactId>
+                <version>1.5.0</version>
+                <executions>
+                    <execution>
+                        <id>jboss-undeploy</id>
+                        <goals>
+                            <goal>undeploy</goal>
+                        </goals>
+                        <phase>clean</phase>
+                    </execution>
+                    <execution>
+                        <id>jboss-deploy</id>
+                        <goals>
+                            <goal>harddeploy</goal>
+                        </goals>
+                        <phase>package</phase>
+                    </execution>
+                </executions>
+                <configuration>
+                    <jbossHome>${jboss.directory}</jbossHome>
+                    <serverName>dummyserver-standard</serverName>
+                    <hostName>localhost</hostName>
+                    <port>8080</port>
+                    <fileNames>
+                        <fileName>${basedir}/target/DummyDemo-ear-1.0-SNAPSHOT.ear</fileName>
+                    </fileNames>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    
+</project>

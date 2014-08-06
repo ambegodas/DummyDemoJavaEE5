@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	 
+	<!-- Basic Properties -->
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.developerscrappad</groupId>
+	<artifactId>DummyDemo-appclient</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<name>DummyDemo-appclient</name>
+	 
+	<!-- Reference the parent -->
+	<parent>
+		<artifactId>project</artifactId>
+		<groupId>com.developerscrappad</groupId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+	 
+	<!-- The packaging value for Enterprise Application Client shoude be "app-client" -->
+	<packaging>app-client</packaging>
+	 
+	<!-- Define the necessary dependencies -->
+	<dependencies>
+		<dependency>
+			<groupId>com.developerscrappad</groupId>
+			<artifactId>DummyDemo-api</artifactId>
+			<version>1.0-SNAPSHOT</version>
+			<type>jar</type>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.developerscrappad</groupId>
+			<artifactId>DummyDemo-ejb</artifactId>
+			<version>1.0-SNAPSHOT</version>
+			<type>ejb</type>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+	 
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.0.2</version>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-acr-plugin</artifactId>
+				<version>1.0</version>
+				<extensions>true</extensions>
+				<configuration>
+					<archive>
+						<manifest>
+							<!-- This is the place to define the main class for Enterprise App 
+								Client -->
+							<mainClass>com.developerscrappad.AppClientMain</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	 
+</project>
