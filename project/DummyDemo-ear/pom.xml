@@ -10,7 +10,7 @@
 
     <!-- The absolute path to the JBoss Server, please change this... -->
     <properties>
-        <jboss.directory>/home/pathmasri/Testing/jboss-5.1.0.GA/</jboss.directory>
+        <jboss.directory>/home/pathmasri/apps/jboss-5.1.0.GA</jboss.directory>
         <!--jboss.directory>/home/pathmasri/Testing/jboss-4.2.3.GA/</jboss.directory -->
     </properties>
     <!-- Reference the parent -->

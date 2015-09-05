@@ -2,24 +2,24 @@
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
          xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
- 
+
     <!-- Basic Properties -->
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.developerscrappad</groupId>
     <artifactId>DummyDemo-web</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>DummyDemo-web</name>
- 
+
     <!-- Reference to parent -->
     <parent>
         <artifactId>project</artifactId>
         <groupId>com.developerscrappad</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
- 
+
     <!-- For web modules, the packaging type should be "war" -->
     <packaging>war</packaging>
- 
+
     <dependencies>
         <!-- Local module dependency must be marked as "provided" in scope -->
         <dependency>
@@ -65,7 +65,7 @@
 
 
     </dependencies>
- 
+
     <build>
         <plugins>
             <plugin>
@@ -79,5 +79,5 @@
             </plugin>
         </plugins>
     </build>
- 
+
 </project>
